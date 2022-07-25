@@ -6,12 +6,19 @@ const EMPATE = 0;
 const GANA = 1;
 const PIERDE = 2;
 
+var GANADOS = 0;
+var EMPATADOS = 0;
+var PERDIDOS = 0;
+
 const piedraBtn = document.getElementById("piedra");
 const papelBtn = document.getElementById("papel");
 const tijeraBtn = document.getElementById("tijera");
 const resultText = document.getElementById("start-text");
 const userImg = document.getElementById("user-img");
 const machineImg = document.getElementById("machine-img");
+const contGanados = document.getElementById("win");
+const contEmpatados = document.getElementById("tie");
+const contPerdidos = document.getElementById("lost");
 
 piedraBtn.addEventListener("click", ()=>{
     play(PIEDRA);
@@ -34,12 +41,18 @@ function play(userOption) {
     switch(result) {
         case EMPATE:
             resultText.innerHTML = "Empate";
+            EMPATADOS += 1;
+            addCounter(contEmpatados);
             break;
         case GANA:
             resultText.innerHTML = "Ganaste";
+            GANADOS += 1;
+            addCounter(contGanados);
             break;
         case PIERDE:
             resultText.innerHTML = "Perdiste";
+            PERDIDOS += 1;
+            addCounter(contPerdidos);
             break;
     }
 }
@@ -73,5 +86,17 @@ function calcResult (userOption, machineOption) {
     } else if (userOption === TIJERA){
         if (machineOption === PIEDRA) { return PIERDE}
         if (machineOption === PAPEL) { return GANA}
+    }
+}
+
+function addCounter(counter) {
+    if (counter === contGanados) {
+        contGanados.innerHTML = GANADOS;
+    }
+    if (counter === contPerdidos) {
+        contPerdidos.innerHTML = PERDIDOS;
+    }
+    if (counter === contEmpatados) {
+        contEmpatados.innerHTML = EMPATADOS;
     }
 }

@@ -33,6 +33,10 @@ h1 {
     width: 20%;
 }
 
+#machine-img {
+    transform: scaleX(-1);
+}
+
 #start-text {
     font-size: 28px;
     padding: 20px;
@@ -49,8 +53,19 @@ h1 {
 
 button {
     background-color: antiquewhite;
-    margin: 5px;
+    margin: 10px;
     padding: 4px;
+}
+
+#counters {
+    display: flex;
+    justify-content: space-around;
+}
+
+#win, #tie, #lost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 footer {
